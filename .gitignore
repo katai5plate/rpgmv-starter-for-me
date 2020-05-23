@@ -102,3 +102,20 @@ dist
 
 # TernJS port file
 .tern-port
+
+# rpgmv
+audio
+img/animations
+img/battlebacks1
+img/battlebacks2
+img/characters
+img/enemies
+img/faces
+img/parallaxes
+img/pictures
+img/sv_actors
+img/sv_enemies
+img/tilesets
+img/titles1
+img/titles2
+movies

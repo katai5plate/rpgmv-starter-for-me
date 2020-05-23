@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "main": "index.html",
+  "js-flags": "--expose-gc",
+  "window": {
+    "title": "",
+    "toolbar": false,
+    "width": 816,
+    "height": 624,
+    "icon": "icon/icon.png"
+  },
+  "scripts": {
+    "detect": "yarn build ./detect.ts && node ./detect",
+    "build": "yarn run tsc --resolveJsonModule --esModuleInterop"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "fs-extra": "^9.0.0",
+    "typescript": "^3.9.3"
+  }
+}
