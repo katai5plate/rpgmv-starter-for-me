@@ -1,6 +1,13 @@
 # rpgmv-starter-for-me
 自分用のツクールMV新規プロジェクト
 
+## 現状の機能
+### 未使用素材を省いて WEB 用ビルド
+- `yarn deploy` で実行
+- JavaScript で素材を使う場合、**行を跨がずに** `an.se("Cat")` を記述すると、ビルド時にコピーしてくれる。
+  - `an.{ここに入るもの}("")`: bgm, bgs, me, se, animations, battlebacks1, battlebacks2, characters, enemies, faces, parallaxes, pictures, sv_actors, sv_enemies, system, tilesets, titles1, titles2, movies
+  - この関数は、引数に入れた文字列がそのまま返る。なのでスクリプトからファイル名を指定する時などに使える。
+
 ## 方針
 - 特に使わなそうな初期設定を排除
 - 既存プラグインでいいものはまんま入れてしまう。
@@ -10,12 +17,11 @@
 - JS　で素材を使う場合 `an.{DIR_NAME}("{FILE_NAME}")` または `an.{DIR_NAME}('{FILE_NAME}')` を行を跨がずに書けば、未使用素材フィルタリングにひっかからなくなるようにする。
 
 ## 今作ってる
-- 未使用素材を省いてWEBビルド
 - TypeScript 環境 (ES6出力、型定義、アツマール型定義)
 
 ## 入れたい機能
 - 必須
-  - [ ] 未使用素材を省いてWEBビルド
+  - [x] 未使用素材を省いてWEBビルド
   - [ ] TypeScript環境 (ES6出力、型定義、アツマール型定義)
   - [ ] ES6、WEBGLモードに対応してない環境は強制遮断 (detect-browser)
   - [ ] 常にWEBGLモード
