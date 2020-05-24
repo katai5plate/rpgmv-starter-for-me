@@ -1,3 +1,21 @@
+/*:
+ * @plugindesc yarn deploy 時に特定の素材の除外を防ぐ
+ * @author Had2Apps
+ * @help
+ * [[[ 使い方 ]]]
+ * - これは自作デプロイ機能とセットにして初めて効果を発揮する。
+ * - 行を跨がずに an.se("Cat") のように記述すると、削除候補から除外される。
+ * - ビルド時にテキストとして読み込まれるため、コメントに書いてもいい。
+ * - この関数は、引数に入れた文字列がそのまま返る。なのでスクリプトからファイル名を指定する時などにも使える。
+ *
+ * an.ここに入るもの("")
+ * - bgm, bgs, me, se
+ * - animations, battlebacks1, battlebacks2
+ * - characters, enemies, faces, parallaxes
+ * - pictures, sv_actors, sv_enemies, system
+ * - tilesets, titles1, titles2, movies
+ */
+
 (function () {
   "use strict";
   var __assign =
