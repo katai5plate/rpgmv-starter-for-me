@@ -10,8 +10,8 @@
     "icon": "icon/icon.png"
   },
   "scripts": {
-    "detect": "yarn build ./detect.ts && node ./detect",
-    "build": "yarn run tsc --resolveJsonModule --esModuleInterop"
+    "dev": "tsc -w",
+    "deploy": "node scripts/buildWithoutUnusedAssets"
   },
   "dependencies": {
     "@types/fs-extra": "^9.0.1",
