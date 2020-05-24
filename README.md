@@ -8,6 +8,9 @@
   - `an.{ここに入るもの}("")`: bgm, bgs, me, se, animations, battlebacks1, battlebacks2, characters, enemies, faces, parallaxes, pictures, sv_actors, sv_enemies, system, tilesets, titles1, titles2, movies
   - この関数は、引数に入れた文字列がそのまま返る。なのでスクリプトからファイル名を指定する時などに使える。
   - ビルド時にテキストとして読み込まれるため、コメントに書いてもいい。
+### 減色済 `img/system`
+- 625 KB -> 90.7 KB に削減。
+- `IconSet.png` と `MadeWithMv.png` は色数を抑えるためデザイン変更。
 
 ## 方針
 - 特に使わなそうな初期設定を排除
