@@ -16,38 +16,55 @@
   message.className = "init-error message";
   initError.appendChild(message);
   document.body.appendChild(initError);
-  // main.js を一旦無力化
-  var _PluginManager = PluginManager;
-  var _SceneManager = SceneManager;
+  var chromeUrl = "https://www.google.com/intl/ja/chrome/";
+  var gotoChrome = [
+    // アツマール対応
+    "if('RPGAtsumaru' in window){window.RPGAtsumaru.popups.openLink('",
+    chromeUrl,
+    // それ以外の場合
+    "');}else{location.href='",
+    chromeUrl,
+    "';}",
+  ].join("");
+  var title = '<h2 style="color: red;">お使いのブラウザは動作対象外です</h2>';
+  var getDescription = function (isIE) {
+    return (
+      "<p>" +
+      [
+        "申し訳ございませんが、" +
+          (!isIE ? "最新のバージョンに更新するか、" : ""),
+        '別のブラウザ ( <u style="color: blue;" onclick="' +
+          gotoChrome +
+          '">Google Chrome</u> など ) をお試しください。',
+        !isIE
+          ? "また、もし以下の「エラーの原因」が「ファイルアクセス不可」のみの場合、"
+          : "",
+        !isIE ? "ブラウザの設定を変更することで改善する可能性があります。" : "",
+      ].join("<br>") +
+      "</p>"
+    );
+  };
+  // main.js を一旦無力化 (+ IE 5 対策)
+  var _PluginManager = "PluginManager" in window ? PluginManager : {};
+  var _SceneManager = "SceneManager" in window ? SceneManager : {};
   PluginManager = { setup: function () {} };
   SceneManager = { run: function () {} };
-  // 処理
+  // IE の処理
+  if (
+    navigator.userAgent.indexOf("MSIE") > -1 ||
+    navigator.userAgent.indexOf("Trident") > -1 ||
+    "defineProperties" in Object === false // IE 5 対策
+  ) {
+    document.body.style.backgroundColor = "white";
+    message.innerHTML = title + getDescription(true);
+    return;
+  }
+  // IE 以外の処理
   window.lowPerformanceDetector(function (result, reasons) {
     if (result === false) {
       document.body.style.backgroundColor = "white";
-      var chromeUrl = "https://www.google.com/intl/ja/chrome/";
-      var gotoChrome = [
-        // アツマール対応
-        "if('RPGAtsumaru' in window){window.RPGAtsumaru.popups.openLink('",
-        chromeUrl,
-        // それ以外の場合
-        "');}else{location.href='",
-        chromeUrl,
-        "';}",
-      ].join("");
       message.innerHTML = [
-        [
-          '<h2 style="color: red;">お使いのブラウザは動作対象外です</h2>',
-          [
-            "<p>申し訳ございませんが、最新のバージョンに更新するか、",
-            '別のブラウザ ( <u style="color: blue;" onclick="' +
-              gotoChrome +
-              '">Google Chrome</u> など ) をお試しください。',
-            "また、もし以下の「エラーの原因」が「ファイルアクセス不可」のみの場合、",
-            "ブラウザの設定を変更することで改善する可能性があります。</p>",
-          ].join("<br>"),
-          "<pre><b>[ エラーの原因 ]</b>\n",
-        ],
+        [title, getDescription(), "<pre><b>[ エラーの原因 ]</b>\n"],
         reasons.map(function (x) {
           if (x === "ES6-8") return "ES6-8 実装不完全";
           if (x === "Reading local file") return "ファイルアクセス不可";
