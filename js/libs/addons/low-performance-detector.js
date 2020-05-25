@@ -45,7 +45,7 @@ window.lowPerformanceDetector = function (onComplete) {
     return document.createElement("canvas").getContext("webgl");
   });
   tryit("WEB Audio API", function () {
-    return "AudioContext" in window || webkitAudioContext in window;
+    return "AudioContext" in window || "webkitAudioContext" in window;
   });
   tryit("Fetch API", function () {
     return "fetch" in window;
