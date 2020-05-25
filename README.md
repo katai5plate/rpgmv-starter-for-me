@@ -105,3 +105,4 @@
 
 # メモ
 - アツマールデモ: https://game.nicovideo.jp/atsumaru/games/gm14943?key=34565400ceb4&link_in=users
+  - `?param9=debug-protect` で動作対象外の時の挙動を再現
