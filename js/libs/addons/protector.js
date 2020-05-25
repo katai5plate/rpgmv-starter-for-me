@@ -61,7 +61,13 @@
   }
   // IE 以外の処理
   window.lowPerformanceDetector(function (result, reasons) {
-    if (result === false) {
+    var isError = result === false;
+    if ("RPGAtsumaru" in window) {
+      if (window.RPGAtsumaru.query["param9"] === "debug-protect") {
+        isError = true;
+      }
+    }
+    if (isError) {
       document.body.style.backgroundColor = "white";
       message.innerHTML = [
         [title, getDescription(), "<pre><b>[ エラーの原因 ]</b>\n"],
