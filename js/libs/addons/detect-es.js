@@ -1,11 +1,8 @@
-/*:
- * @plugindesc ブラウザが ES6 ～ 10 に対応しているかテストする
- * @author Had2Apps
- * @help
+/*
  * [[[ 使い方 ]]]
- * - JavaScript（スクリプト）上から実行してください。
- * - window.detectES(N) を実行すると、Nに対応したESバージョンの動作テストを行います。
- * - 正常動作を確認したときは true が返り、そうでないなら警告ログと false が返ります。
+ * - JavaScript（スクリプト）上から実行する。
+ * - window.detectES(N) を実行すると、Nに対応したESバージョンの動作テストを行う。
+ * - 正常動作を確認したときは true が返り、そうでないなら警告ログと false が返る。
  *
  * detectES(6) // ES6 をテスト
  * detectES(7) // ES7 をテスト
