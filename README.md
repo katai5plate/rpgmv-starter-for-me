@@ -102,3 +102,6 @@
   - [ ] 効果音の 2000 互換表
 - 願わくば
   - [ ] 2000 の戦闘アニメ再現
+
+# メモ
+- アツマールデモ: https://game.nicovideo.jp/atsumaru/games/gm14943?key=34565400ceb4&link_in=users
