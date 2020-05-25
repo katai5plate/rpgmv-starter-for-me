@@ -11,11 +11,25 @@
     <link rel="icon" href="icon/icon.png" type="image/png" />
     <link rel="apple-touch-icon" href="icon/icon.png" />
     <link rel="stylesheet" type="text/css" href="fonts/gamefont.css" />
+    <style>
+      .init-error {
+        background-color: white;
+        color: black;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        left: 0px;
+        top: 0px;
+      }
+    </style>
     <title>mygame</title>
   </head>
   <body style="background-color: black;">
-    <script type="text/javascript" src="js/libs/addons/asset-names.js"></script>
-    <script type="text/javascript" src="js/libs/addons/detect-es.js"></script>
     <script type="text/javascript" src="js/libs/pixi.js"></script>
     <script type="text/javascript" src="js/libs/pixi-tilemap.js"></script>
     <script type="text/javascript" src="js/libs/pixi-picture.js"></script>
@@ -32,6 +46,16 @@
     <script type="text/javascript" src="js/rpg_sprites.js"></script>
     <script type="text/javascript" src="js/rpg_windows.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
+    <!-- 追加アドオン (必ず main.js の直前に配置) -->
+    <script type="text/javascript" src="js/libs/addons/asset-names.js"></script>
+    <script type="text/javascript" src="js/libs/addons/detect-es.js"></script>
+    <script
+      class="xhr-test"
+      type="text/javascript"
+      src="js/libs/addons/low-performance-detector.js"
+    ></script>
+    <script type="text/javascript" src="js/libs/addons/protector.js"></script>
+    <!-- 追加アドオン ここまで -->
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
