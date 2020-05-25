@@ -30,7 +30,7 @@ window.lowPerformanceDetector = function (onComplete) {
     } catch (e) {}
     reasons.push(reason);
   };
-  tryit("ES8", function () {
+  tryit("ES6-8", function () {
     return detectES(8);
   });
   tryit("ES9 Rest/Spread Properties", "(()=>({...[1,2]}))()");

@@ -49,6 +49,7 @@
           "<pre><b>[ エラーの原因 ]</b>\n",
         ],
         reasons.map(function (x) {
+          if (x === "ES6-8") return "ES6-8 実装不完全";
           if (x === "Reading local file") return "ファイルアクセス不可";
           return x + " 非対応";
         }),
