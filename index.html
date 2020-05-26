@@ -30,6 +30,19 @@
     <title>mygame</title>
   </head>
   <body style="background-color: black;">
+    <!-- そもそも外部 JS が読み込めない時用にログ出力 -->
+    <p id="progress" style="background-color: white;">
+      JavaScript をロード中... <br />
+      (ここで停止する場合は、
+      <a href="https://www.google.com/intl/ja/chrome/">
+        JavaScript が使用可能なブラウザ
+      </a>
+      をご利用ください。)
+    </p>
+    <script>
+      document.getElementById("progress").innerText =
+        "前提ライブラリ をロード中...";
+    </script>
     <script type="text/javascript" src="js/libs/pixi.js"></script>
     <script type="text/javascript" src="js/libs/pixi-tilemap.js"></script>
     <script type="text/javascript" src="js/libs/pixi-picture.js"></script>
@@ -39,6 +52,10 @@
       type="text/javascript"
       src="js/libs/iphone-inline-video.browser.js"
     ></script>
+    <script>
+      document.getElementById("progress").innerText =
+        "コアスクリプト をロード中...";
+    </script>
     <script type="text/javascript" src="js/rpg_core.js"></script>
     <script type="text/javascript" src="js/rpg_managers.js"></script>
     <script type="text/javascript" src="js/rpg_objects.js"></script>
@@ -46,6 +63,10 @@
     <script type="text/javascript" src="js/rpg_sprites.js"></script>
     <script type="text/javascript" src="js/rpg_windows.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
+    <script>
+      document.getElementById("progress").innerText =
+        "追加アドオン をロード中...";
+    </script>
     <!-- 追加アドオン (必ず main.js の直前に配置) -->
     <script type="text/javascript" src="js/libs/addons/asset-names.js"></script>
     <script type="text/javascript" src="js/libs/addons/detect-es.js"></script>
@@ -56,6 +77,9 @@
     ></script>
     <script type="text/javascript" src="js/libs/addons/protector.js"></script>
     <!-- 追加アドオン ここまで -->
+    <script>
+      document.getElementById("progress").innerText = "開始中...";
+    </script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
