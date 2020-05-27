@@ -104,5 +104,7 @@
   - [ ] 2000 の戦闘アニメ再現
 
 # メモ
+
 - アツマールデモ: https://game.nicovideo.jp/atsumaru/games/gm14943?key=34565400ceb4&link_in=users
   - `?param9=debug-protect&` で動作対象外の時の挙動を再現
+- Windows ビルドは libs/windows をコピーし www ディレクトリを作り、その中にゲームを入れる
