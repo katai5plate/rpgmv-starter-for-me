@@ -55,11 +55,12 @@
 
 ## 入れたい機能
 
-- 必須
+- 組み込み
   - [x] 未使用素材を省いて WEB ビルド
   - [ ] TypeScript 環境 (ES6 出力、型定義、アツマール型定義)
   - [x] ES6、WEBGL モードに対応してない環境は強制遮断 (detect-browser)
   - [x] 常に WEBGL モード
+  - [ ] プリロード
 - 楽に機能を作れる
   - [ ] オートセーブ
   - [ ] 放置時間取得
@@ -69,7 +70,6 @@
   - 開発系
     - [ ] エラー表示
     - [ ] ユーザー NG
-    - [ ] 直列プリロード
   - 操作系
     - [ ] タイトルスキップ切替
     - [ ] マウス移動無効化切替
@@ -106,4 +106,4 @@
 
 - アツマールデモ: https://game.nicovideo.jp/atsumaru/games/gm14943?key=34565400ceb4&link_in=users
   - `?param9=debug-protect&` で動作対象外の時の挙動を再現
-- Windows ビルドは libs/windows をコピーし www ディレクトリを作り、その中にゲームを入れる
+- Windows/Mac/Linux ビルドは yarn deploy 後のプロジェクトファイルから公式ビルドする
