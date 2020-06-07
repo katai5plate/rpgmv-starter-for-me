@@ -8,7 +8,7 @@
  * - クラス xhr-test と src が付与された script タグ
  * - js/main.js を読み込む直前
  */
-(function () {
+window.whenGameIsReady = function (onReady) {
   // エラー画面構築
   var initError = document.createElement("div");
   initError.className = "init-error";
@@ -44,11 +44,6 @@
       "</p>"
     );
   };
-  // main.js を一旦無力化 (+ IE 5 対策)
-  var _PluginManager = "PluginManager" in window ? PluginManager : {};
-  var _SceneManager = "SceneManager" in window ? SceneManager : {};
-  PluginManager = { setup: function () {} };
-  SceneManager = { run: function () {} };
   // IE の処理
   if (
     navigator.userAgent.indexOf("MSIE") > -1 ||
@@ -85,29 +80,7 @@
     } else {
       // エラー画面を削除
       initError.remove();
-      // main.js を再実行
-      PluginManager = _PluginManager;
-      SceneManager = _SceneManager;
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", document.querySelector('script[src~="js/main.js"]').src);
-      xhr.overrideMimeType("text/javascript");
-      xhr.send();
-      xhr.onload = function () {
-        // プラグイン設定のため実行
-        eval(xhr.response);
-        // Community_Basic 対策
-        SceneManager.preferableRendererType = function () {
-          if (!Utils.isOptionValid("canvas")) {
-            // クエリで例外的に canvas モードにできるように変更
-            return "canvas";
-          } else {
-            // Community_Basic で指定してても強制 WEBGL モード
-            return "webgl";
-          }
-        };
-        // ゲーム開始
-        window.onload();
-      };
+      onReady();
     }
   });
-})();
+};

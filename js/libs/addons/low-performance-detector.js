@@ -2,6 +2,7 @@
  * システム要件に合致するかどうかを調べる関数
  *
  * 必須:
+ * - utils.js
  * - detect-es.js
  * - クラス xhr-test と src が付与された script タグ
  *
@@ -79,11 +80,8 @@ window.lowPerformanceDetector = function (onComplete) {
   } catch (e) {
     xhrResult = false;
   }
-  var i = this.setInterval(function () {
-    if (xhrResult !== null) {
-      clearInterval(i);
-      if (xhrResult === false) reasons.push("Reading local file");
-      onComplete(reasons.length === 0, reasons);
-    }
-  }, 1);
+  _u.callbackWhen(xhrResult === null, function () {
+    if (xhrResult === false) reasons.push("Reading local file");
+    onComplete(reasons.length === 0, reasons);
+  });
 };

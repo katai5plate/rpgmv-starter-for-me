@@ -348,11 +348,7 @@
     return testPropWithSymbols(code, this.esVersion, this.isOnly);
   };
 
-  var concatArray = function (a) {
-    return a.reduce(function (p, c) {
-      return p.concat(c);
-    }, []);
-  };
+  var concatArray = _u.concatArray;
 
   /**
    * @param {number|undefined} [es=10] 6-10

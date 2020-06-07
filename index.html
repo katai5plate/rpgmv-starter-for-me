@@ -71,6 +71,7 @@
         "追加アドオン をロード中...";
     </script>
     <!-- 追加アドオン (必ず main.js の直前に配置) -->
+    <script type="text/javascript" src="js/libs/addons/utils.js"></script>
     <script type="text/javascript" src="js/libs/addons/asset-names.js"></script>
     <script type="text/javascript" src="js/libs/addons/detect-es.js"></script>
     <script
@@ -79,10 +80,24 @@
       src="js/libs/addons/low-performance-detector.js"
     ></script>
     <script type="text/javascript" src="js/libs/addons/protector.js"></script>
+    <script
+      type="text/javascript"
+      src="js/libs/addons/pixi-filters.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/libs/addons/prerun-coremod.js"
+    ></script>
     <!-- 追加アドオン ここまで -->
     <script>
       document.getElementById("progress").innerText = "開始中...";
+
+      window.whenGameIsReady(function () {
+        PluginManager.setup($plugins);
+        SceneManager.run(Scene_Boot);
+        document.getElementById("progress").remove();
+      });
     </script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
   </body>
 </html>
