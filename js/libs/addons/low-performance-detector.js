@@ -80,8 +80,14 @@ window.lowPerformanceDetector = function (onComplete) {
   } catch (e) {
     xhrResult = false;
   }
-  _u.callbackWhen(xhrResult === null, function () {
-    if (xhrResult === false) reasons.push("Reading local file");
-    onComplete(reasons.length === 0, reasons);
-  });
+  _u.callbackWhen(
+    "lpd-xhr",
+    function () {
+      return xhrResult !== null;
+    },
+    function () {
+      if (xhrResult === false) reasons.push("Reading local file");
+      onComplete(reasons.length === 0, reasons);
+    }
+  );
 };

@@ -1,9 +1,11 @@
 window._u = {
-  callbackWhen: function (when, fn) {
-    var i = setInterval(function () {
-      if (!when) return;
+  _intervals: {},
+  callbackWhen: function (id, whenFn, fn) {
+    var i = window._u._intervals;
+    i[id] = setInterval(function () {
+      if (!whenFn()) return;
       fn();
-      clearInterval(i);
+      clearInterval(i[id]);
     }, 0);
   },
   concatArray: function (a) {
