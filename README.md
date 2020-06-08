@@ -107,3 +107,6 @@
 - アツマールデモ: https://game.nicovideo.jp/atsumaru/games/gm14943?key=34565400ceb4&link_in=users
   - `?param9=debug-protect&` で動作対象外の時の挙動を再現
 - Windows/Mac/Linux ビルドは yarn deploy 後のプロジェクトファイルから公式ビルドする
+- mp3 素材を ogg にする方法:
+  1. ffmpeg をインストール
+  2. mp3 素材の入ったフォルダに `./scripts/tools/mp3ToOgg.bat` をコピーして実行
