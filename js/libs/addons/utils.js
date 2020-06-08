@@ -13,4 +13,9 @@ window._u = {
       return p.concat(c);
     }, []);
   },
+  concatObject: function (a) {
+    return a.reduce(function (p, c) {
+      return Object.assign(p, c);
+    }, []);
+  },
 };
