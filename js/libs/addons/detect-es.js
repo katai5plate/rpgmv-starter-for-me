@@ -257,7 +257,7 @@
       var cond = isOnly ? esVersion === trigger : esVersion >= trigger;
       return cond ? value || [] : [];
     };
-    return concatArray([
+    return _u.concatArray([
       pick(6, code.es6),
       pick(7, code.es7),
       pick(8, code.es8),
@@ -300,7 +300,7 @@
     var data = createTestCase(code, esVersion, isOnly).reduce(function (p, t) {
       var a = t.parent;
       var b = t.children;
-      return concatArray([
+      return _u.concatArray([
         p,
         b.map(function (c) {
           var code = "'" + c + "' in " + (a ? "window." + a : "window");
@@ -326,7 +326,7 @@
     var data = createTestCase(code, esVersion, isOnly).reduce(function (p, t) {
       var a = t.target;
       var b = t.expects;
-      return concatArray([
+      return _u.concatArray([
         p,
         b.map(function (c) {
           var code = (a ? "window." + a : "window") + "[Symbol." + c + "]";
@@ -348,15 +348,13 @@
     return testPropWithSymbols(code, this.esVersion, this.isOnly);
   };
 
-  var concatArray = _u.concatArray;
-
   /**
    * @param {number|undefined} [es=10] 6-10
    * @param {boolean} [isOnly=false] true にすると指定の ES しか調べない
    */
   window.DetectES.prototype.start = function () {
     var resultSyntax = this.testSyntax(codes.syntax).data;
-    var resultProps = concatArray([
+    var resultProps = _u.concatArray([
       this.testProps(codes.props).data,
       this.testPropWithSymbols(codes.propWithSymbols).data,
     ])
