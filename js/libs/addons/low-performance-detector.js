@@ -21,50 +21,69 @@
 
 window.lowPerformanceDetector = function (onComplete) {
   var reasons = [];
-  var tryit = function (reason, code) {
-    try {
-      if (typeof code === "string") {
-        new Function(code);
-        return;
-      }
-      if (!!code()) return;
-    } catch (e) {}
-    reasons.push(reason);
+  var onError = function (res) {
+    reasons.push(res.reason);
   };
-  tryit("ES6-8", function () {
-    return new DetectES(8).start().result;
-  });
-  tryit(
+  _u.tryit(
+    "ES6-8",
+    function () {
+      return new DetectES(8).start().result;
+    },
+    onError
+  );
+  _u.tryit(
     "ES9 Rest/Spread Properties",
     DetectES.codes.syntax.es9.filter(function (x) {
       return x.desc.indexOf("{...}") > -1;
-    })[0].code
+    })[0].code,
+    onError
   );
-  tryit(
+  _u.tryit(
     "ES9 for-await-of",
     DetectES.codes.syntax.es9.filter(function (x) {
       return x.desc.indexOf("for-await-of") > -1;
-    })[0].code
+    })[0].code,
+    onError
   );
-  tryit("ES9 Promise.prototype features", function () {
-    return DetectES.testProps(
-      DetectES.codes.props.es9.filter(function (x) {
-        return x.parent.indexOf("Promise.prototype") > -1;
-      })[0]
-    ).result;
-  });
-  tryit("base64 conversions", function () {
-    return "atob" in window && "btoa" in window;
-  });
-  tryit("WEBGL (Full support)", function () {
-    return document.createElement("canvas").getContext("webgl");
-  });
-  tryit("WEB Audio API", function () {
-    return "AudioContext" in window || "webkitAudioContext" in window;
-  });
-  tryit("Fetch API", function () {
-    return "fetch" in window;
-  });
+  _u.tryit(
+    "ES9 Promise.prototype features",
+    function () {
+      return DetectES.testProps(
+        DetectES.codes.props.es9.filter(function (x) {
+          return x.parent.indexOf("Promise.prototype") > -1;
+        })[0]
+      ).result;
+    },
+    onError
+  );
+  _u.tryit(
+    "base64 conversions",
+    function () {
+      return "atob" in window && "btoa" in window;
+    },
+    onError
+  );
+  _u.tryit(
+    "WEBGL (Full support)",
+    function () {
+      return document.createElement("canvas").getContext("webgl");
+    },
+    onError
+  );
+  _u.tryit(
+    "WEB Audio API",
+    function () {
+      return "AudioContext" in window || "webkitAudioContext" in window;
+    },
+    onError
+  );
+  _u.tryit(
+    "Fetch API",
+    function () {
+      return "fetch" in window;
+    },
+    onError
+  );
   var xhrResult = null;
   try {
     var xhr = new XMLHttpRequest();
